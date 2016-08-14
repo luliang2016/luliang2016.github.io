@@ -1,10 +1,13 @@
-.scrollable-menu {
-    height: auto;
-    max-height: 200px;
-    overflow-x: hidden;
+.cv-page-header {
+	display: inline-block;
 }
 
-h3::before {
+.cv-img {
+	width: 200px;
+	height: 200px;
+}
+
+.cv-h3::before {
 	content: " ";
 	display: inline-block;
 	border-radius: 25px;
@@ -16,11 +19,10 @@ h3::before {
 	margin-right: 10px;
 }
 
-.output-panel-body {
+.cv-panel-body {
 	margin-left: 50px;
 }
 
-/*
-strong {
+/*strong {
 	margin-right: 20px;
 }*/
