@@ -1,3 +1,8 @@
+.cv-builder-header {
+	margin-top: 20px;
+	text-align: center;
+}
+
 .scrollable-menu {
     height: auto;
     max-height: 200px;

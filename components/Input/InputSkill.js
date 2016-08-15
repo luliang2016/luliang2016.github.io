@@ -11,62 +11,66 @@ var InputSkill = React.createClass({
         var skillList = this.state.skillArray;
         skillList.push({
             skillName: " ",
-            proficiency: 0,
+            proficiency: 50,
             id: Date.now()
         });
         this.setState({
             skillArray: skillList
         });
     },
-    delete: function(event){
-        var skillList = this.state.skillArray;
-        var id = event.target.parentNode.parentNode.parentNode.getAttribute("data-id");
+    operation: function(id,type,value){
         var index;
-        this.state.skillArray.forEach(function(skill){
-            if(skill.id == id)
-                index = skillList.indexOf(skill);
-        });
-        skillList.splice(index, 1);
-        this.setState({
-            skillArray: skillList
-        });
-        this.props.inputSkill(this.state.skillArray);
-    },
-    inputSkill: function(type,value,id){
-        var skillList = this.state.skillArray;
-        var index;
-        this.state.skillArray.forEach(function(skill){
-            if(skill.id == id)
-                index = skillList.indexOf(skill);
+        var skills = this.state.skillArray;
+        skills.forEach(function(skill){
+            if (skill.id == id) {
+                index = skills.indexOf(skill);
+            }
         });
         switch(type){
-            case "skillName":{
-                skillList[index].skillName = value;
-            };break;
-            case "proficiency":{
-                skillList[index].proficiency = value;
-            };break;
+            case "name": skills[index].skillName = value;break;
+            case "proficiency": skills[index].proficiency = value;break;
+            case "delete": skills.splice(index, 1); break;
         }
         this.setState({
-            skillArray: skillList
+            skillArray:skills
         });
         this.props.inputSkill(this.state.skillArray);
     },
-    inputSkillName: function(event){
-        this.inputSkill("skillName",event.target.value,event.target.parentNode.parentNode.getAttribute("data-id"));
+    onChange: function(event){
+        var id;
+        id = this.findIdElment(event.target,"id-panel").getAttribute("data-id");
+        this.operation(id,event.target.getAttribute("data-type"),event.target.value);
     },
-    inputProficiency: function(event){
-        this.inputSkill("proficiency",event.target.value,event.target.parentNode.parentNode.getAttribute("data-id"));
+    findIdElment: function(element,className){
+        while(!element.classList.contains(className)){
+            element = element.parentNode;
+        }
+        return element;
     },
     renderNewSkill: function(){
         var skills = [];
         for(var i=0;i<this.state.skillArray.length;i++){
             skills.push(
-                <div className='panel' key={this.state.skillArray[i].id} data-id={this.state.skillArray[i].id}>
+                <div className='panel id-panel' key={this.state.skillArray[i].id} data-id={this.state.skillArray[i].id}>
                     <div className='panel-body'>
-                        <label>Skill Name: </label><input type='text' onChange={this.inputSkillName}></input>&nbsp;&nbsp;
-                        <label>Proficiency: </label><input type='number' min="0" max='100' onChange={this.inputProficiency}></input>
-                        <a onClick={this.delete} className='pull-right'><span className='glyphicon glyphicon-remove' ></span></a>
+                        <form className="form-horizontal" role="form">
+                            <div className="form-group">
+                                <label className="control-label col-sm-3">Skill Name:</label>
+                                <div className="col-sm-9">
+                                    <input type="text" className="form-control" data-type="name" onChange={this.onChange} 
+                                    placeholder=""/>
+                                </div>
+                            </div>
+                            <div className="form-group">
+                                <label className="control-label col-sm-3">Proficiency:</label>
+                                <div className="col-sm-9"> 
+                                    <input type='number' min="0" max='100' className="form-control" data-type="proficiency" 
+                                    onChange={this.onChange} placeholder="50"/>
+                                </div>
+                            </div>
+                        </form>
+                        <a onClick={this.onChange}  className='pull-right'>
+                        <span data-type="delete" className='glyphicon glyphicon-remove' ></span></a>
                     </div>
                 </div>
             );

@@ -1,9 +1,6 @@
 import React from "react";
 
 const InputContact = React.createClass({
-    // inputStatement: function(event){
-    //     this.props.inputStatement(event.target.value);
-    // },
     contact: {
         address: "",
         mobile: "",
@@ -22,9 +19,31 @@ const InputContact = React.createClass({
             <div className="panel panel-default">
                 <div className="panel-heading">Personal Statement</div>
                 <div className="panel-body">
-                    <label>Address:</label><input type="text" data-type="address" onChange={this.onChange}></input><br/>
-                    <label>Mobile:</label><input type="text" data-type="mobile" onChange={this.onChange}></input><br/>
-                    <label>Email:</label><input type="text" data-type="email" onChange={this.onChange}></input>
+                    <form className="form-horizontal" role="form">
+                        <div className="form-group">
+                            <label for="header-name" className="control-label col-sm-3">Address:</label>
+                            <div className="col-sm-9">
+                                <input type="text" className="form-control" id="header-name" data-type="address" onChange={this.onChange} 
+                                placeholder="Enter your address"/>
+                            </div>
+                        </div>
+                        <div className="form-group">
+                            <label for="header-birth" className="control-label col-sm-3">Mobile:</label>
+                            <div className="col-sm-9">
+                                <input type="text" className="form-control" id="header-birth" data-type="mobile" onChange={this.onChange}
+                                placeholder="Enter your mobile"/>
+                            </div>
+                            
+                        </div>
+                        <div className="form-group">
+                            <label for="header-birth" className="control-label col-sm-3">Email:</label>
+                            <div className="col-sm-9">
+                                <input type="text" className="form-control" id="header-birth" data-type="email" onChange={this.onChange}
+                                placeholder="Enter your email"/>
+                            </div>
+                            
+                        </div>
+                    </form>
                 </div>
             </div>
         );

@@ -9,7 +9,7 @@ const InputPersonalStatement = React.createClass({
             <div className="panel panel-default">
                 <div className="panel-heading">Personal Statement</div>
                 <textarea className="panel-body form-control" onChange={this.inputStatement}
-                    placeholder="Enter your personal statement"></textarea>
+                    placeholder="Enter your personal statement here"></textarea>
             </div>
         );
     }

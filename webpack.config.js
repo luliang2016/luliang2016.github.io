@@ -5,7 +5,7 @@ module.exports = {
 	devtool: debug ? "inline-sourcemap" : null,
     entry: "./scripts.js",
     output: {
-        path: __dirname+"/cv-builder",
+        path: __dirname,
         filename: "scripts.min.js"
     },
     module: {

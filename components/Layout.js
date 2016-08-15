@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 
 import {Input} from "./Input";
 import {Output} from "./Output";
+import {Header} from "./Header";
 
 const Layout = React.createClass({
 	
@@ -67,6 +68,7 @@ const Layout = React.createClass({
     render: function(){
         return (
             <div>
+                <Header></Header>
                 <Output outputData={this.state.outputData}></Output>
                 <Input input={this.input}></Input>
             </div>
