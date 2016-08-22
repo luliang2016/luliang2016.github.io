@@ -3,10 +3,13 @@ var webpack = require('webpack');
 
 module.exports = {
 	devtool: debug ? "inline-sourcemap" : null,
-    entry: "./scripts.js",
+    entry: {
+    	app: "./scripts",
+    	vendor: ["react","react-dom"]
+    },
     output: {
         path: __dirname,
-        filename: "scripts.min.js"
+        filename: "bundle.min.js"
     },
     module: {
 	  loaders: [
@@ -28,5 +31,6 @@ module.exports = {
 		new webpack.optimize.DedupePlugin(),
 		new webpack.optimize.OccurenceOrderPlugin(),
 		new webpack.optimize.UglifyJsPlugin({ mangle: false, sourcemap: false }),
+		new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"vendor.bundle.js")
 	],
 };
