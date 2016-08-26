@@ -9,51 +9,12 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="vendor.bundle.js"></script>
+	
 	<link rel="stylesheet" type="text/css" href="index.css">
 </head>
 <body>
-	<div class=" jumbotron">
-		<div class="container">
-			<div class="page-header">
-				<span class="cv-page-header">
-					<h1>LU LIANG</h1>
-					<p><strong>Date of Birth:</strong>Feb. 19, 1991&nbsp;&nbsp;&nbsp;</p>
-				</span>
-				<span class="pull-right">
-					<img class="cv-img" src="http://stuffpoint.com/dogs/image/453795-dogs-lovely-dog.jpg" class="img-circle">
-				</span>
-			</div>
-		</div>
-	</div>
-		<div class="col-md-4"></div>
-		<div class="col-md-4" style="text-align:center">
-			<ul class="nav nav-tabs" >
-				  <li class="active" style="cursor:pointer"><a id="cv">My CV</a></li>
-				  <li><a id="cv-builder" style="cursor:pointer">CV Builder</a></li>
-			</ul>
-		</div>
-		<div class="col-md-4"></div>
-	<div class="container" id="content">
-		
-		
-		
-	</div>
-		<script> 
-            $(function(){
-		      $("#content").load("cv.html"); 
-		    });
-            $("#cv").click(function(event){
-                $("#content").load("cv.html");
-                activeNav(event);
-            });
-            $("#cv-builder").click(function(event){
-                $("#content").load("cv-builder.html");
-                activeNav(event);
-            });
-            function activeNav(event){
-                $(".nav").children().removeClass("active");
-                $(event.target.parentNode).addClass("active");
-            };
-    	</script>
+	<div id="app"></div>
+	<!-- <script src="scripts.min.js"></script> -->
+	<script src="bundle.min.js"></script>
 </body>
 </html>
