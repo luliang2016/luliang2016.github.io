@@ -25,6 +25,20 @@
 	<!-- <script src="scripts.min.js"></script> -->
 	<!-- <script src="bundle.min.js"></script> -->
 	<script type="text/javascript">
+		if (typeof(Storage!="undefined")) {
+			var name = localStorage.getItem("AllanName");
+			if (name == "null") {
+				alert("Allan has no name");
+				localStorage.setItem("AllanName", "Allan");
+			}else {
+				alert("Allan's name is: " + name);
+			}
+		}else {
+			alert("Sorry, you browser is too old to support my game.")
+			alert("GET OUT !!!")
+		}
+
+
 		game = new Phaser.Game("100","100",Phaser.CANVAS,"game-arear",{
 			preload:preload,create:create,update:update
 		});
