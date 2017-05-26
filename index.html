@@ -25,7 +25,28 @@
 	<!-- <script src="scripts.min.js"></script> -->
 	<!-- <script src="bundle.min.js"></script> -->
 	<script type="text/javascript">
-		game = new Phaser.Game("100","100",Phaser.CANVAS,"game-arear");
+		game = new Phaser.Game("100","100",Phaser.CANVAS,"game-arear",{
+			preload:preload,create:create,update:update
+		});
+
+		var ball;
+
+		function preload() {
+			game.load.image("ball","img/ball.png")
+		}
+
+		function create() {
+			ball = game.add.sprite(game.world.width*0.5,game.world.height*0.5,"ball");
+			ball.anchor.set(0.5);
+			game.physics.enable(ball,Phaser.Physics.ARCADE);
+			ball.body.collideWorldBounds = true;
+			ball.body.bounce.set(1);
+			ball.body.velocity.set(300,300);
+		}
+
+		function update() {
+
+		}
 	</script>
 </body>
 </html>
